@@ -11,7 +11,7 @@
         <!-- Überschrift-->
         <h1>Sportstudio- Anmeldung</h1>
 
-        <form action="verarbeitung.php" method="post" >
+        <form action="AusgabeÜberprüfungDaten.php" method="post" >
 
             <div class="dropdownStudio">
                 <!-- Dropdown erstellen-->
@@ -51,6 +51,7 @@
             <!-- Style noch hinzufügen-->
             <h2> Personendaten:</h2>
 
+            <!-- Geschlecht durch Dropdown ersetzen das macht das auslesen leichter da sonst mit if abfragen (mehraufwand) überprüft werden muss ob nur eine und welches Feld angekreuzt wurde -->
             <p> <strong> Geschlecht: </strong> </p>
             <ul>
                 <li>

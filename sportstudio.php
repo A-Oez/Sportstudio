@@ -18,17 +18,16 @@
 <!-- Optimize placing of elements -->
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="transform: translateX(15%); left: 10%;">
+    <nav class="navbar" style="transform: translateX(15%); left: 10%;">
         <ul class="nav navbar-nav navbar-right">
             <li><img src="images/logo3.png"></li>
         </ul>
     </nav>
 
-    <form action="AusgabeÜberprüfungDaten.php" method="post" role=" form " class="col-xs-3 " >
+    <form action="AusgabeÜberprüfungDaten.php" method="post">
 
         <!--Container: Obere Seite der HTML Page (Dropdowns + Newsletter)-->
         <div class="container " style="margin-right: 200px; margin-top: 50px; margin-bottom: 50px;">
-            <!--<form role=" form " class="col-xs-3 ">-->
                 <div class="form-row ">
                     <div class="form-group ">
                         <label for="FormSelectStudio ">Standort:</label>
@@ -58,12 +57,10 @@
 
                 <input type="checkbox" name="newsletterTRUE" />
                 <em>Newsletter abbonnieren?</em>
-            <!--</form>-->
-
         </div>
 
         <hr style="width: auto; height: 1px; background-color:steelblue; margin: 0px; "></hr>
-        
+
         <section class="text-center;" style="margin-top: 50px; margin-left: 10px;" id="Tarifinfos">
             <h4 class="text-uppercase" style="margin-left: 10px;">Tarif- Infos:</h4>
 
@@ -120,38 +117,36 @@
 
         <div class="container " style="margin-left: 570px; margin-top: -445px; ">
             <h2>Anmeldedaten:</h2>
-            <div class="row ">
-                <!--<form role="form " class="col-xs-3 ">-->
+            <div class="row ">                
+                    <div class="form-group col-md-6 ">
+                        <label for="FormSelectGender ">Geschlecht</label>
+                        <select multiple class="form-control " id="FormSelectGender ">
+                          <option>Männlich</option>
+                          <option>Weiblich</option>
+                          <option>Divers</option>
+                        </select>
+                     </div>
 
-                    <div class="form-row ">
-                        <div class="form-group col-md-6 ">
-                            <label for="FormSelectGender ">Geschlecht</label>
-                            <select multiple class="form-control " id="FormSelectGender ">
-                              <option>Männlich</option>
-                              <option>Weiblich</option>
-                              <option>Divers</option>
-                            </select>
-                        </div>
-
-                        <div class="image ">
-                            <img src="images/bodyImagejpg.jpg ">
-                        </div>
+                    <div class="image ">
+                        <img src="images/bodyImagejpg.jpg ">
                     </div>
+        
 
-                    <div class="form-row ">
+                    <div class="form-row" id="Vorname">
                         <div class="form-group col-md-6 ">
                             <label for="inputVName ">Vorname</label>
-                            <input type="text " class="form-control " id="inputVName " placeholder="Email ">
+                            <input type="text " class="form-control " id="inputVName ">
                         </div>
+
                         <div class="form-group col-md-6 ">
                             <label for="inputNName ">Nachname</label>
-                            <input type="text " class="form-control " id="inputNName " placeholder="Password ">
+                            <input type="text " class="form-control " id="inputNName ">
                         </div>
                     </div>
 
-                    <div class="form-group ">
-                        <label for="inputGeburtstag ">Geburtstag</label>
-                        <input type="text " class="form-control " id="inputGeburtstag " placeholder="DD-MM-YYYY ">
+                    <div class="form-group" style="margin-left: 10px">
+                         <label for="inputGeburtstag ">Geburtstag</label>
+                         <input type="text " class="form-control " id="inputGeburtstag " placeholder="DD-MM-YYYY ">
                     </div>
 
                     <div class="form-row ">
@@ -183,9 +178,7 @@
                             <label for="inputEmail ">Email:</label>
                             <input type="email " class="form-control " id="inputEmail " placeholder="example@xyz.com ">
                         </div>
-                    </div>
 
-                    <div class="form-row ">
                         <div class="form-group col-md-6 ">
                             <label for="inputKontoinhaber ">Kontoinhaber</label>
                             <input type="text " class="form-control " id="inputKontoinhaber " placeholder="Vor- & Nachname ">
@@ -195,12 +188,10 @@
                             <input type="text " class="form-control " id="inputIBAN " placeholder="DE23100000001234567890 ">
                         </div>
                     </div>
-                   
-                <!--</form>-->
-                
             </div>
+            <button type="submit " class="btn btn-primary " style="background-color: steelblue; margin-bottom: 50px; ">Registrieren</button>
         </div>
-        <button type="submit">Registrieren</button>      
+
     </form>
 
     <!-- Footer -->

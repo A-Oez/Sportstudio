@@ -1,3 +1,7 @@
+<?php 
+    $newsletter = 0; 
+?>
+
 <html>
     <head>
         <title>Überprüfung der eingegebenen Daten</title>
@@ -5,64 +9,80 @@
     <body>
         <h1>Sind die angegebene Werte richtig?</h1>
 
-        <p>Ausgewähltes Studio: PLATZHALTER</p>
-        <p>Ausgewälter Tarif: PLATZHALTER</p>
-        <p>Vorname: <?php echo $_POST["Vname"]?></p>
-        <p>Nachname: <?php echo $_POST["Nname"]?></p>
-        <p>Geschlecht: PLATZHALTER</p>
-        <p>Geburtsdatum: <?php echo $_POST["geburtsdatum"]?></p>
-        <p>Straße: <?php echo $_POST["straße"]?></p>
-        <p>HausNr.: <?php echo $_POST["hausnummer"]?></p>
-        <p>PLZ: <?php echo $_POST["plz"]?></p>
-        <p>Ort: <?php echo $_POST["ort"]?></p>
-        <p>Email: <?php echo $_POST["email"]?></p>
-
+        <p>Ausgewähltes Studio: <?php echo $_POST["FormSelectStudio"]?></p>
+        <p>Ausgewälter Tarif: <?php echo $_POST["FormSelectTarif"]?></p>
+        <p>Vorname: <?php echo $_POST["inputVName"]?></p>
+        <p>Nachname: <?php echo $_POST["inputNName"]?></p>
+        <p>Geschlecht: <?php echo $_POST["FormSelectGender"]?></p>
+        <p>Geburtsdatum: <?php echo $_POST["inputGeburtstag"]?></p>
+        <p>Straße: <?php echo $_POST["inputStraße"]?></p>
+        <p>HausNr.: <?php echo $_POST["inputHN"]?></p>
+        <p>PLZ: <?php echo $_POST["inputPLZ"]?></p>
+        <p>Ort: <?php echo $_POST["inputOrt"]?></p>
+        <p>Email: <?php echo $_POST["inputEmail"]?></p>
         <p>Newsletter: 
         <?php 
         if(isset($_POST["newsletterTRUE"]))
         {
+            $newsletter = 1;
             echo "Ja";
         }        
         else
         {
+            $newsletter = 0;
             echo "Nein";
         }
         ?></p>
-        
-        <p>Telefon: <?php echo $_POST["tlfnummer"]?></p>
-        <p>Kontoinhaber: <?php echo $_POST["kontoinhaber"]?></p>
-        <p>IBAN: <?php echo $_POST["iban"]?></p>
+        <p>Telefon: <?php echo $_POST["inputTLF"]?></p>
+        <p>Kontoinhaber: <?php echo $_POST["inputKontoinhaber"]?></p>
+        <p>IBAN: <?php echo $_POST["inputIBAN"]?></p>
 
-        <!-- Button -->
+
+         <!-- Button --> 
+        <from action="AusgabeÜberprüfungDaten.php" method="post">
+            <input type="submit" name="test" id ="test" value="An Datenbank übertragen"/> 
+        </form>
+
         <?php 
             $servername = "localhost";
             $user = "root";
             $pw = "";
             $db = "sportstudio";
 
+            if(isset($_POST['test']))
+            {
+                InsertIntoDatabase();
+            }
+
             function InsertIntoDatabase()
             {
+                #Baut Verbindung mit der Datenbank auf
                 $con = new mysqli($servername, $user, $pw, $db);
 
                 if($con->connect_error){
-                die("Verbindung zur Datenbank fehlgeschlagen.".$con->connect_error);
+                    die("Verbindung zur Datenbank fehlgeschlagen.".$con->connect_error);
+                }
+                else{
+                    echo "Verbindung zur Datenbank steht!";
+                }
 
-                $sql = "INSERT INTO mitglieder (FitnessStudio, Tarif, Vorname,Nachname,Geschlecht,Geburtsdatum,Straße,Hausnummer,Plz,Ort,Email,Newsletter,Telefon,Kontoinhaber,IBAN) VALUES ('PLATZHALTER', 'PLATZHALTER', '$_POST["Vname"]', '$_POST["Nname"]', 'PLATZHALTER', '$_POST["geburtsdatum"]', '$_POST["straße"]', '$_POST["hausnummer"]', '$_POST["plz"]', '$_POST["ort"]', '$_POST["email"]', '$_POST["newsletterTRUE"]', '$_POST["tlfnummer"]', '$_POST["kontoinhaber"]', '$_POST["iban"]')";
+                #Statement
+                $sql = "INSERT INTO mitglieder (MitgliedNr, FitnessStudio, Tarif, Vorname, Nachname, Geschlecht, Geburtsdatum, Straße, Hausnummer, Plz, Ort, Email, Newsletter, Telefon, Kontoinhaber, IBAN) VALUES ('', '". $_POST["FormSelectStudio"] ."', '". $_POST["FormSelectTarif"] ."', '". $_POST["inputVName"] ."', '". $_POST["inputNName"] ."', '". $_POST["FormSelectGender"] ."', '". $_POST["inputGeburtstag"] ."', '". $_POST["inputStraße"] ."', '". $_POST["inputHN"] ."', '". $_POST["inputPLZ"] ."', '". $_POST["inputOrt"] ."', '". $_POST["inputEmail"] ."', $newsletter, '". $_POST["inputTLF"] ."', '". $_POST["inputKontoinhaber"] ."', '". $_POST["inputIBAN"] ."');";
 
+                #Hier wird das Statement ausgeführt und überprüft ob es erfolgreich war
                 if($con->query($sql) === TRUE)
                 {
                     #Erfolgreich übertragen
-                }
+                    echo "query succeded!";
+                }     
                 else
                 {
-                    #Nicht erfolgreich übertragen worden.
+                    #Übertragung fehlgeschlagen
+                    echo "Query Faield" . $con->error;
                 }
 
                 $con->close();
             }
-            
-
         ?>
-        <button onclick="InsertIntoDatabase()">Eingabe bestätigen</button>
     </body>
 </html>

@@ -31,7 +31,7 @@
                 <div class="form-row ">
                     <div class="form-group ">
                         <label for="FormSelectStudio ">Standort:</label>
-                        <select class="form-control " id="FormSelectStudio ">
+                        <select name="FormSelectStudio" class="form-control ">
                            <option>Heilbronn</option>
                            <option>Öhringen</option>
                            <option>Weinsberg</option>
@@ -41,14 +41,14 @@
                          </select>
                     </div>
 
-                    <div class="form-group " style="margin-left: 30px;" id="TarifAuswahl">
-                        <label for="FormSelectTarif ">Tarif: </label>
-                        <select class="form-control " id="FormSelectTarif ">
-                                  <option>Basic</option>
-                                  <option>Classic</option>
-                                  <option>Premium</option>
-                                </select>
-                    </div>
+                        <div class="form-group " style="margin-left: 30px;" id="TarifAuswahl">
+                            <label for="FormSelectTarif ">Tarif: </label>
+                            <select name="FormSelectTarif" class="form-control ">
+                                <option>Basic</option>
+                                <option>Classic</option>
+                                <option>Premium</option>
+                            </select>
+                        </div>
 
                     <div class="image" style="margin-left: 50px;">
                         <img src="images/ImageHantel.png">
@@ -120,7 +120,7 @@
             <div class="row ">                
                     <div class="form-group col-md-6 ">
                         <label for="FormSelectGender ">Geschlecht</label>
-                        <select multiple class="form-control " id="FormSelectGender ">
+                        <select name="FormSelectGender" multiple class="form-control ">
                           <option>Männlich</option>
                           <option>Weiblich</option>
                           <option>Divers</option>
@@ -132,66 +132,66 @@
                     </div>
         
 
-                    <div class="form-row" id="Vorname">
+                    <div class="form-row" ID = "Vorname">
                         <div class="form-group col-md-6 ">
                             <label for="inputVName ">Vorname</label>
-                            <input type="text " class="form-control " id="inputVName ">
+                            <input type="text " name="inputVName" class="form-control ">
                         </div>
 
                         <div class="form-group col-md-6 ">
                             <label for="inputNName ">Nachname</label>
-                            <input type="text " class="form-control " id="inputNName ">
+                            <input type="text " name="inputNName" class="form-control ">
                         </div>
                     </div>
 
                     <div class="form-group" style="margin-left: 10px">
                          <label for="inputGeburtstag ">Geburtstag</label>
-                         <input type="text " class="form-control " id="inputGeburtstag " placeholder="DD-MM-YYYY ">
+                         <input type="text " name = "inputGeburtstag" class="form-control " placeholder="DD-MM-YYYY ">
                     </div>
 
                     <div class="form-row ">
                         <div class="form-group col-md-6 ">
                             <label for="inputStraße ">Straße</label>
-                            <input type="text " class="form-control " id="inputStraße " placeholder="Straße ">
+                            <input type="text " name="inputStraße" class="form-control " placeholder="Straße ">
                         </div>
                         <div class="form-group col-md-6 ">
                             <label for="inputHN ">Hausnummer</label>
-                            <input type="text " class="form-control " id="inputHN " placeholder="Hausnummer: ">
+                            <input type="text " name="inputHN" class="form-control " placeholder="Hausnummer: ">
                         </div>
 
                         <div class="form-group col-md-6 ">
                             <label for="inputPLZ ">Postleitzahl</label>
-                            <input type="text " class="form-control " id="inputPLZ " placeholder="Postleitzahl ">
+                            <input type="text " name="inputPLZ" class="form-control " placeholder="Postleitzahl ">
                         </div>
                         <div class="form-group col-md-6 ">
                             <label for="inputOrt ">Ort</label>
-                            <input type="text " class="form-control " id="inputOrt " placeholder="Ort ">
+                            <input type="text " name="inputOrt" class="form-control " placeholder="Ort ">
                         </div>
                     </div>
 
                     <div class="form-row ">
                         <div class="form-group col-md-6 ">
                             <label for="inputTLF ">Telefonnummer:</label>
-                            <input type="text " class="form-control " id="inputTLF " placeholder="Telefonnummer: ">
+                            <input type="text " name="inputTLF" class="form-control " placeholder="Telefonnummer: ">
                         </div>
                         <div class="form-group col-md-6 ">
                             <label for="inputEmail ">Email:</label>
-                            <input type="email " class="form-control " id="inputEmail " placeholder="example@xyz.com ">
+                            <input type="email " name="inputEmail" class="form-control " placeholder="example@xyz.com ">
                         </div>
 
                         <div class="form-group col-md-6 ">
                             <label for="inputKontoinhaber ">Kontoinhaber</label>
-                            <input type="text " class="form-control " id="inputKontoinhaber " placeholder="Vor- & Nachname ">
+                            <input type="text " name="inputKontoinhaber" class="form-control " placeholder="Vor- & Nachname ">
                         </div>
                         <div class="form-group col-md-6 ">
                             <label for="inputIBAN ">IBAN</label>
-                            <input type="text " class="form-control " id="inputIBAN " placeholder="DE23100000001234567890 ">
+                            <input type="text " name="inputIBAN" class="form-control " placeholder="DE23100000001234567890 ">
                         </div>
                     </div>
             </div>
             <button type="submit " class="btn btn-primary " style="background-color: steelblue; margin-bottom: 50px; ">Registrieren</button>
         </div>
-
+        
     </form>
 
     <!-- Footer -->

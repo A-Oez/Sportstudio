@@ -22,11 +22,10 @@
             <li><img src="images/logo3.png"></li>
         </ul>
     </nav>
-    <form id="formID" action="AusgabeÜberprüfungDaten.php" method="post" class="main-form needs-validation" novalidate>
-        <!--Container: Obere Seite der HTML Page (Dropdowns + Newsletter)-->
-        <div class="container " style="margin-right: 200px; margin-top: 50px; margin-bottom: 50px;">
-            <div class="form-row ">
-                <div class="form-group ">
+    <form action="AusgabeÜberprüfungDaten.php" method="post" class="main-form needs-validation" novalidate>
+        <div class="container " style="transform: translateX(30%); left: 10%; margin-top: 10px; margin-bottom: 10px;">
+            <div class="form-row">
+                <div class="form-group">
                     <label for="FormSelectStudio ">Standort:</label>
                     <select name="FormSelectStudio" class="form-control ">
                            <option>Heilbronn</option>
@@ -52,8 +51,10 @@
             <input type="checkbox" name="newsletterTRUE" />
             <em>Newsletter abbonnieren?</em>
         </div>
+        
         <hr style="width: auto; height: 1px; background-color:steelblue; margin: 0px; "></hr>
-        <section class="text-center;" style="margin-top: 50px; margin-left: 10px;" id="Tarifinfos">
+        
+        <section class="text-center;" style="margin-top: 50px; margin-left: 10px;">
             <h4 class="text-uppercase" style="margin-left: 10px;">Tarif- Infos:</h4>
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0;">
                 <h5 style="margin-top: 20px;">Basic</h5>
@@ -113,11 +114,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6 ">
                         <label for="inputVName ">Vorname <a style="color:red">*</a> </label>
-                        <input type="text " pattern="[a-zA-Z]*" name="inputVName" class="form-control" required>
+                        <input type="text " pattern="[a-zA-ZäöüÄÖÜß ]*" name="inputVName" class="form-control" required>
                     </div>
                     <div class="form-group col-md-6 ">
                         <label for="inputNName ">Nachname <a style="color:red">*</a> </label>
-                        <input type="text " pattern="[a-zA-Z]*" name="inputNName" class="form-control " required>
+                        <input type="text " pattern="[a-zA-ZäöüÄÖÜß- ]*" name="inputNName" class="form-control " required>
                     </div>
                 </div>
                 <div class="form-group" style="margin-left: 10px">
@@ -139,7 +140,7 @@
                     </div>
                     <div class="form-group col-md-6 ">
                         <label for="inputOrt ">Ort <a style="color:red">*</a> </label>
-                        <input type="text " pattern="[a-zA-Z]*" name="inputOrt" class="form-control " required>
+                        <input type="text " pattern="[a-zA-ZäöüÄÖÜß ]*" name="inputOrt" class="form-control " required>
                     </div>
                 </div>
                 <div class="form-row ">
@@ -165,13 +166,10 @@
         </div>
 
     </form>
-    <!-- Footer -->
-    <footer class="bg-light " ; id="footer ">
-        <!-- Grid container -->
+    
+    <footer class="bg-light ">
         <div class="container p-4 ">
-            <!--Grid row-->
             <div class="row ">
-                <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 250px ">
                     <h5 class="text-uppercase ">Kontakt</h5>
                     <ul class="list-unstyled mb-0 ">
@@ -183,8 +181,7 @@
                         </li>
                     </ul>
                 </div>
-                <!--Grid column-->
-                <!--Grid column-->
+
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 50px; ">
                     <h5 class="text-uppercase mb-0 ">Anschrift (Zentralsitz)</h5>
                     <ul class="list-unstyled ">
@@ -199,10 +196,9 @@
                         </li>
                     </ul>
                 </div>
-                <!--Grid column-->
             </div>
-            <!--Grid row-->
         </div>
+
         <div class="text-center p-3 " style="background-color: steelblue; margin-right: auto; ">
             © 2020 Copyright:
             <a class="text-dark ">Sportsudio-Wolkenfeld</a>
@@ -215,11 +211,8 @@
     <script>
         (function() {
             'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
+            
             Array.prototype.slice.call(forms)
                 .forEach(function(form) {
                     form.addEventListener('submit', function(event) {

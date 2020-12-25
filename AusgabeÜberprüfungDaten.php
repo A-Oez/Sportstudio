@@ -91,7 +91,7 @@
                 <div class="form-group col-md-6 ">
                     <label for="newsletterTRUE_">Newsletter:</label>
                     <input type="text" class="form-control" name="newsletterTRUE_" readonly value="<?php 
-                        if(isset($_POST[" newsletterTRUE "]))
+                        if(isset($_POST["newsletterTRUE"]))
                         {
                             $newsletter = 1;
                             echo "Ja ";

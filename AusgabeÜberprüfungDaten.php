@@ -25,7 +25,7 @@
         </ul>
     </nav>
 
-    <h1 style="text-align: center;">Sind die angegebene Werte richtig?</h1>
+    <h1 style="text-align: center;">Sind die angegebenen Werte richtig?</h1>
     <form>
         <div class="container">
             <div class="form-row">

@@ -22,7 +22,9 @@
             <li><img src="images/logo3.png"></li>
         </ul>
     </nav>
+    
     <form action="AusgabeÜberprüfungDaten.php" method="post" class="main-form needs-validation" novalidate>
+   
         <div class="container " style="transform: translateX(30%); left: 10%; margin-top: 10px; margin-bottom: 10px;">
             <div class="form-row">
                 <div class="form-group">
@@ -56,7 +58,7 @@
         
         <section class="text-center;" style="margin-top: 50px; margin-left: 10px;">
             <h4 class="text-uppercase" style="margin-left: 10px;">Tarif- Infos:</h4>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0;">
+            <div>
                 <h5 style="margin-top: 20px;">Basic</h5>
                 <ul>
                     <li>
@@ -95,9 +97,10 @@
                 </ul>
             </div>
         </section>
+    
         <div class="container " style="margin-left: 570px; margin-top: -445px; ">
             <h2>Anmeldedaten:</h2>
-            <div class="row ">
+            <div class="form-row">
                 <div class="form-group col-md-6 ">
                     <label for="FormSelectGender ">Geschlecht <a style="color:red">*</a></label>
                     <select name="FormSelectGender" multiple class="form-control " required>
@@ -169,8 +172,8 @@
     
     <footer class="bg-light ">
         <div class="container p-4 ">
-            <div class="row ">
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 250px ">
+            <div class="row">
+                <div class="text-center " style="margin-left: 250px ">
                     <h5 class="text-uppercase ">Kontakt</h5>
                     <ul class="list-unstyled mb-0 ">
                         <li>
@@ -182,7 +185,7 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 50px; ">
+                <div class="text-center " style="margin-left: 50px; ">
                     <h5 class="text-uppercase mb-0 ">Anschrift (Zentralsitz)</h5>
                     <ul class="list-unstyled ">
                         <li>

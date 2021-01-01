@@ -1,143 +1,212 @@
-<?php 
-    $newsletter = 0; 
-?>
-
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Daten- überprüfen</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <style>
-        html {
-            overflow-x: hidden;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="navbar" style="transform: translate(15%); left: 10%;">
-        <ul class="nav navbar-nav navbar-right">
-            <li><img src="images/logo3.png"></li>
-        </ul>
-    </nav>
-
-    <h1 style="text-align: center;">Sind die angegebenen Werte richtig?</h1>
-    <form>
-        <div class="container">
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="FormSelectStudio_">Ausgewählter Standort:</label>
-                    <input type="text" class="form-control" name="FormSelectStudio_" readonly value="<?php echo $_POST["FormSelectStudio"]?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="FormSelectTarif_">Ausgewählter Standort:</label>
-                    <input type="text" class="form-control" name="FormSelectTarif_" readonly value="<?php echo $_POST["FormSelectTarif"]?>">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="inputVName_">Vorname:</label>
-                    <input type="text" class="form-control" name="inputVName_" readonly value="<?php echo $_POST["inputVName"]?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="inputNName_">Nachname:</label>
-                    <input type="text" class="form-control" name="inputNName_" readonly value="<?php echo $_POST["inputNName"]?>">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="FormSelectGender_">Geschlecht:</label>
-                    <input type="text" class="form-control" name="FormSelectGender_" readonly value="<?php echo $_POST["FormSelectGender"]?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="inputGeburtstg_">Geburtsdatum:</label>
-                    <input type="text" class="form-control" name="inputGeburtstg_" readonly value="<?php echo $_POST["inputGeburtstag"]?>">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="inputStraße_">Straße:</label>
-                    <input type="text" class="form-control" name="inputStraße_" readonly value="<?php echo $_POST["inputStraße"]?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="inputHN_">Hausnummer:</label>
-                    <input type="text" class="form-control" name="inputHN_" readonly value="<?php echo $_POST["inputHN"]?>">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="inputPLZ_">PLZ:</label>
-                    <input type="text" class="form-control" name="inputPLZ_" readonly value="<?php echo $_POST["inputPLZ"]?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="inputOrt_">Ort:</label>
-                    <input type="text" class="form-control" name="inputOrt_" readonly value="<?php echo $_POST["inputOrt"]?>">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="inputEmail_">Email:</label>
-                    <input type="text" class="form-control" name="inputEmail_" readonly value="<?php echo $_POST["inputEmail"]?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="newsletterTRUE_">Newsletter:</label>
-                    <input type="text" class="form-control" name="newsletterTRUE_" readonly value="<?php 
-                        if(isset($_POST["newsletterTRUE"]))
-                        {
-                            $newsletter = 1;
-                            echo "Ja ";
-                        }        
-                        else
-                        {
-                            $newsletter = 0;
-                            echo "Nein ";
-                        }
-                        ?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="inputTLF_">Telefonnummer:</label>
-                    <input type="text" class="form-control" name="inputTLF_" readonly value="<?php echo $_POST["inputTLF"]?>">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="inputKontoinhaber_">Kontoinhaber:</label>
-                    <input type="text" class="form-control" name="inputKontoinhaber_" readonly value="<?php echo $_POST["inputKontoinhaber"]?>">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="inputIBAN_">IBAN:</label>
-                    <input type="text" class="form-control" name="inputIBAN_" readonly value="<?php echo $_POST["inputIBAN"]?>">
-                </div>
-            </div>
-    </form>
-        <form action="AusgabeÜberprüfungDaten.php" method="post">
-          <input type="submit" class="btn btn-primary " name="test" id="test" value="An Datenbank übertragen" />
-        </form>
-    </div>
-
+    <head>
+        <title>Überprüfung der eingegebenen Daten</title>
+        
+    </head>
+    
+    <body>
+        <h1>Sind die angegebene Werte richtig?</h1>
+        
         <?php 
-            $servername = "localhost";
-            $user = "root";
-            $pw = "";
-            $db = "sportstudio";
-
-            if(isset($_POST['test']))
-            {
-                InsertIntoDatabase();
+            # Variablen hier definieren und mit if statement prüfen ob Post Daten liefert
+            if(isset($_POST["FormSelectStudio"])){
+                $Studio = $_POST["FormSelectStudio"];
+            }
+            else{
+                $Studio = "";
+            }
+            
+            if(isset($_POST["FormSelectTarif"])){
+                $Tarif = $_POST["FormSelectTarif"];
+            }
+            else{
+                $Tarif="Basic";
             }
 
-            function InsertIntoDatabase()
+            if(isset($_POST["inputVName"])){
+                $Vorname = $_POST["inputVName"];
+            }
+            else{
+                $Vorname="";
+            }
+            
+            if(isset($_POST["inputNName"])){
+                $Nachname = $_POST["inputNName"];
+            }
+            else{
+                $Nachname="";
+            }
+            
+            if(isset($_POST["inputGeschlecht"])){
+                $Geschlecht = $_POST["inputGeschlecht"];
+            }
+            else{
+                $Geschlecht="";
+            }
+            
+            if(isset($_POST["inputGeburtstag"])){
+                $Geburtstag = $_POST["inputGeburtstag"];
+            }
+            else{
+                $Geburtstag="";
+            }
+
+            if(isset($_POST["inputStraße"])){
+                $Straße = $_POST["inputStraße"];
+            }
+            else{
+                $Straße="";
+            }
+
+            if(isset($_POST["inputHN"])){
+                $HausNr = $_POST["inputHN"];
+            }
+            else{
+                $HausNr="";
+            }
+            
+            if(isset($_POST["inputPLZ"])){
+                $Plz = $_POST["inputPLZ"];
+            }
+            else{
+                $Plz="";
+            }
+
+            if(isset($_POST["inputOrt"])){
+                $Ort = $_POST["inputOrt"];
+            }
+            else{
+                $Ort="";
+            }
+
+            if(isset($_POST["inputEmail"])){
+                $Email = $_POST["inputEmail"];
+            }
+            else{
+                $Email = "";
+            }
+
+            if(isset($_POST["newsletterTRUE"]))
             {
+                $newsletter = 1;
+                $NewsletterJN = "Ja";
+            }        
+            else
+            {
+                $newsletter = 0;
+                $NewsletterJN = "Nein";
+            }
+
+            if(isset($_POST["inputTLF"])){
+                $Telefon = $_POST["inputTLF"];
+            }
+            else{
+                $Telefon="";
+            }
+
+            if(isset($_POST["inputKontoinhaber"])){
+                $Kontoinhaber = $_POST["inputKontoinhaber"];
+            }
+            else{
+                $Kontoinhaber="";
+            }
+
+            if(isset($_POST["inputIBAN"])){
+                $Iban = $_POST["inputIBAN"];
+            }
+            else{
+                $Iban="";
+            }         
+        ?>
+
+        <!-- TEXTBOXEN -->
+
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Fitnessstudio</label>
+            <input type="text " name="OutputFitnessstudio" class="form-control" value=<?php echo $Studio?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Tarif</label>
+            <input type="text " name="OutputTarif" class="form-control" value=<?php echo $Tarif?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Vorname</label>
+            <input type="text " name="OutputVName" class="form-control" value=<?php echo $Vorname?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Nachname</label>
+            <input type="text " name="OutputNName" class="form-control" value=<?php echo $Nachname?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Geschlecht</label>
+            <input type="text " name="OutputGeschlecht" class="form-control" value=<?php echo $Geschlecht?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Geburtstag</label>
+            <input type="text " name="OutputGeburtstag" class="form-control" value=<?php echo $Geburtstag?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Straße</label>
+            <input type="text " name="OutputStraße" class="form-control" value=<?php echo $Straße?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Hausnummer</label>
+            <input type="text " name="OutputHausnummer" class="form-control" value=<?php echo $HausNr?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">PLZ</label>
+            <input type="text " name="OutputPLZ" class="form-control" value=<?php echo $Plz?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Ort</label>
+            <input type="text " name="OutputOrt" class="form-control" value=<?php echo $Ort?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Email</label>
+            <input type="text " name="OutputEmail" class="form-control" value=<?php echo $Email?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Newsletter</label>
+            <input type="text " name="OutputEmail" class="form-control" value=<?php echo $NewsletterJN?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Telefonnummer</label>
+            <input type="text " name="OutputTelefon" class="form-control" value=<?php echo $Telefon?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">Kontoinhaber</label>
+            <input type="text " name="OutputKontoinhaber" class="form-control" value=<?php echo $Kontoinhaber?>>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label for="inputVName ">IBAN</label>
+            <input type="text " name="OutputIBAN" class="form-control" value=<?php echo $Iban?>>
+        </div>
+   
+
+
+         <!-- Button -->  <!-- POST an eine 3te neue Seite wo ausgibt erfolgreich angelegt oder halt nicht oder zurück an die Startseite wo ein Popup sich öffnet -->
+        <form class="" action="" method="post">
+            <?php 
+                #input type array = [];
+            ?>
+            <button type="submit" name="SendToDatabase" value="call">An Datenbank übertragen"</button> 
+        </form>
+
+        <?php 
+            
+            if(isset($_POST['SendToDatabase']))
+            {
+                Send();
+            }
+
+
+            function SendMitglied($DatenArray)
+            {
+                $servername = "localhost";
+                $user = "root";
+                $pw = "";
+                $db = "sportstudio";
+
                 #Baut Verbindung mit der Datenbank auf
                 $con = new mysqli($servername, $user, $pw, $db);
 
@@ -166,42 +235,5 @@
                 $con->close();
             }
         ?>
-
-        <footer class="bg-light ">
-            <div class="container p-4 ">
-                <div class="row ">
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 250px ">
-                        <h5 class="text-uppercase ">Kontakt</h5>
-                        <ul class="list-unstyled mb-0 ">
-                            <li>
-                                <a class="text-dark ">Telefonnummer: 01572-3400569</a>
-                            </li>
-                            <li>
-                                <a class="text-dark ">InfoSportstudioWolkenfeld@gmail.com </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 50px; ">
-                        <h5 class="text-uppercase mb-0 ">Anschrift (Zentralsitz)</h5>
-                        <ul class="list-unstyled ">
-                            <li>
-                                <a class="text-dark ">Sportstudio Wolkenfeld</a>
-                            </li>
-                            <li>
-                                <a class="text-dark ">Neue Gartenstraße 12</a>
-                            </li>
-                            <li>
-                                <a class="text-dark ">74072 Heilbronn</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center p-3 " style="background-color: steelblue; margin-right: auto; ">
-                © 2020 Copyright:
-                <a class="text-dark ">Sportsudio-Wolkenfeld</a>
-            </div>
-        </footer>
-</body>
-
+    </body>
 </html>

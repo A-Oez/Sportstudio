@@ -1,13 +1,22 @@
 <html>
-    <head>
-        <title>Überprüfung der eingegebenen Daten</title>
-        
-    </head>
-    
-    <body>
-        <h1>Sind die angegebene Werte richtig?</h1>
-        
-        <?php 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daten- überprüfen</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        html {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+<?php 
             # Variablen hier definieren und mit if statement prüfen ob Post Daten liefert
             if(isset($_POST["FormSelectStudio"])){
                 $Studio = $_POST["FormSelectStudio"];
@@ -37,8 +46,8 @@
                 $Nachname="";
             }
             
-            if(isset($_POST["inputGeschlecht"])){
-                $Geschlecht = $_POST["inputGeschlecht"];
+            if(isset($_POST["FormSelectGender"])){
+                $Geschlecht = $_POST["FormSelectGender"];
             }
             else{
                 $Geschlecht="";
@@ -89,12 +98,12 @@
             if(isset($_POST["newsletterTRUE"]))
             {
                 $newsletter = 1;
-                $NewsletterJN = "Ja";
+                #$NewsletterJN = "Ja";
             }        
             else
             {
                 $newsletter = 0;
-                $NewsletterJN = "Nein";
+                #$NewsletterJN = "Nein";
             }
 
             if(isset($_POST["inputTLF"])){
@@ -119,94 +128,115 @@
             }         
         ?>
 
-        <!-- TEXTBOXEN -->
+    <nav class="navbar" style="transform: translate(15%); left: 10%;">
+        <ul class="nav navbar-nav navbar-right">
+            <li><img src="images/logo3.png"></li>
+        </ul>
+    </nav>
 
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Fitnessstudio</label>
-            <input type="text " name="OutputFitnessstudio" class="form-control" value=<?php echo $Studio?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Tarif</label>
-            <input type="text " name="OutputTarif" class="form-control" value=<?php echo $Tarif?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Vorname</label>
-            <input type="text " name="OutputVName" class="form-control" value=<?php echo $Vorname?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Nachname</label>
-            <input type="text " name="OutputNName" class="form-control" value=<?php echo $Nachname?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Geschlecht</label>
-            <input type="text " name="OutputGeschlecht" class="form-control" value=<?php echo $Geschlecht?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Geburtstag</label>
-            <input type="text " name="OutputGeburtstag" class="form-control" value=<?php echo $Geburtstag?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Straße</label>
-            <input type="text " name="OutputStraße" class="form-control" value=<?php echo $Straße?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Hausnummer</label>
-            <input type="text " name="OutputHausnummer" class="form-control" value=<?php echo $HausNr?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">PLZ</label>
-            <input type="text " name="OutputPLZ" class="form-control" value=<?php echo $Plz?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Ort</label>
-            <input type="text " name="OutputOrt" class="form-control" value=<?php echo $Ort?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Email</label>
-            <input type="text " name="OutputEmail" class="form-control" value=<?php echo $Email?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Newsletter</label>
-            <input type="text " name="OutputEmail" class="form-control" value=<?php echo $NewsletterJN?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Telefonnummer</label>
-            <input type="text " name="OutputTelefon" class="form-control" value=<?php echo $Telefon?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">Kontoinhaber</label>
-            <input type="text " name="OutputKontoinhaber" class="form-control" value=<?php echo $Kontoinhaber?>>
-        </div>
-        <div class="form-group col-md-6 ">
-            <label for="inputVName ">IBAN</label>
-            <input type="text " name="OutputIBAN" class="form-control" value=<?php echo $Iban?>>
-        </div>
-   
+    <h1 style="text-align: center;">Sind die angegebenen Werte richtig?</h1>
+    <form action="HinzufügenZurDatenbank.php" method="post">
+        <div class="container">
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="FormSelectStudio_">Ausgewählter Standort:</label>
+                    <input type="text" class="form-control" name="FormSelectStudio_" value=<?php echo $Studio?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="FormSelectTarif_">Ausgewählter Standort:</label>
+                    <input type="text" class="form-control" name="FormSelectTarif_" value=<?php echo $Tarif?>>
+                </div>
+            </div>
 
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="inputVName_">Vorname:</label>
+                    <input type="text" class="form-control" name="inputVName_" value=<?php echo $Vorname?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="inputNName_">Nachname:</label>
+                    <input type="text" class="form-control" name="inputNName_" value=<?php echo $Nachname?>>
+                </div>
+            </div>
 
-         <!-- Button -->  <!-- POST an eine 3te neue Seite wo ausgibt erfolgreich angelegt oder halt nicht oder zurück an die Startseite wo ein Popup sich öffnet -->
-        <form class="" action="" method="post">
-            <?php 
-                #input type array = [];
-            ?>
-            <button type="submit" name="SendToDatabase" value="call">An Datenbank übertragen"</button> 
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="FormSelectGender_">Geschlecht:</label>
+                    <input type="text" class="form-control" name="FormSelectGender_" value=<?php echo $Geschlecht?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="inputGeburtstg_">Geburtsdatum:</label>
+                    <input type="text" class="form-control" name="inputGeburtstg_" value=<?php echo $Geburtstag?>>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="inputStraße_">Straße:</label>
+                    <input type="text" class="form-control" name="inputStraße_" value=<?php echo $Straße?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="inputHN_">Hausnummer:</label>
+                    <input type="text" class="form-control" name="inputHN_" value=<?php echo $HausNr?>>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="inputPLZ_">PLZ:</label>
+                    <input type="text" class="form-control" name="inputPLZ_" value=<?php echo $Plz?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="inputOrt_">Ort:</label>
+                    <input type="text" class="form-control" name="inputOrt_" value=<?php echo $Ort?>>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="inputEmail_">Email:</label>
+                    <input type="text" class="form-control" name="inputEmail_" value=<?php echo $Email?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="newsletterTRUE_">Newsletter:</label>
+                    <input type="text" class="form-control" name="newsletterTRUE_" value=<?php echo $newsletter?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="inputTLF_">Telefonnummer:</label>
+                    <input type="text" class="form-control" name="inputTLF_" value=<?php echo $Telefon?>>
+                </div>
+            </div>
+
+            <!-- Hier bräuchten wir nochmal das Pattern für die beiden Felder-->
+
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="inputKontoinhaber_">Kontoinhaber:</label>
+                    <input type="text" class="form-control" name="inputKontoinhaber_" value=<?php echo $Kontoinhaber?>>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="inputIBAN_">IBAN:</label>
+                    <input type="text" class="form-control" name="inputIBAN_" value=<?php echo $Iban?>>
+                </div>
+            </div>
+    
+          <input type="submit" class="btn btn-primary " name="test" id="test" value="An Datenbank übertragen" />
         </form>
+    </div>
 
         <?php 
-            
-            if(isset($_POST['SendToDatabase']))
+            $servername = "localhost";
+            $user = "root";
+            $pw = "";
+            $db = "sportstudio";
+
+            if(isset($_POST['test']))
             {
-                Send();
+                InsertIntoDatabase();
             }
 
-
-            function SendMitglied($DatenArray)
+            function InsertIntoDatabase()
             {
-                $servername = "localhost";
-                $user = "root";
-                $pw = "";
-                $db = "sportstudio";
-
                 #Baut Verbindung mit der Datenbank auf
                 $con = new mysqli($servername, $user, $pw, $db);
 
@@ -235,5 +265,41 @@
                 $con->close();
             }
         ?>
+
+        <footer class="bg-light ">
+            <div class="container p-4 ">
+                <div class="row ">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 250px ">
+                        <h5 class="text-uppercase ">Kontakt</h5>
+                        <ul class="list-unstyled mb-0 ">
+                            <li>
+                                <a class="text-dark ">Telefonnummer: 01572-3400569</a>
+                            </li>
+                            <li>
+                                <a class="text-dark ">InfoSportstudioWolkenfeld@gmail.com </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0; text-center " style="margin-left: 50px; ">
+                        <h5 class="text-uppercase mb-0 ">Anschrift (Zentralsitz)</h5>
+                        <ul class="list-unstyled ">
+                            <li>
+                                <a class="text-dark ">Sportstudio Wolkenfeld</a>
+                            </li>
+                            <li>
+                                <a class="text-dark ">Neue Gartenstraße 12</a>
+                            </li>
+                            <li>
+                                <a class="text-dark ">74072 Heilbronn</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center p-3 " style="background-color: steelblue; margin-right: auto; ">
+                © 2020 Copyright:
+                <a class="text-dark ">Sportsudio-Wolkenfeld</a>
+            </div>
+        </footer>
     </body>
 </html>

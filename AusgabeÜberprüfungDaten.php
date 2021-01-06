@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
 <?php 
             # Variablen hier definieren und mit if statement prüfen ob Post Daten liefert
             if(isset($_POST["FormSelectStudio"])){

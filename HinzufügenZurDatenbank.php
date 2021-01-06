@@ -63,8 +63,11 @@
                
             <label for="FormSQLExecuteStatus">Anlage Status:</label>
             <input type="text" class="form-control" name="FormSQLExecuteStatus" value=<?php echo $queryStatus?>>
+
+            <a href="http://localhost/Sportstudio.php">Zurück zu Startseite</a>
         </div>
-            
+        
+        
         <!-- Textfeld zur Ausgabe von der Datenbankverbindung -->
         <!-- Textfeld zur Ausgabe von Query Ergebniss -->
         <!-- Button für zurück auf die Sportstudio Seite -->

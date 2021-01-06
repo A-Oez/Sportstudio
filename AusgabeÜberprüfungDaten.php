@@ -98,12 +98,10 @@
             if(isset($_POST["newsletterTRUE"]))
             {
                 $newsletter = 1;
-                #$NewsletterJN = "Ja";
             }        
             else
             {
                 $newsletter = 0;
-                #$NewsletterJN = "Nein";
             }
 
             if(isset($_POST["inputTLF"])){
@@ -135,7 +133,7 @@
     </nav>
 
     <h1 style="text-align: center;">Sind die angegebenen Werte richtig?</h1>
-    <form action="HinzufügenZurDatenbank.php" method="post">
+    <form action="HinzufügenZurDatenbank.php" method="post" class="main-form needs-validation" novalidate>
         <div class="container">
             <div class="form-row">
                 <div class="form-group col-md-6 ">
@@ -151,29 +149,29 @@
             <div class="form-row">
                 <div class="form-group col-md-6 ">
                     <label for="inputVName_">Vorname:</label>
-                    <input type="text" class="form-control" name="inputVName_" value=<?php echo $Vorname?>>
+                    <input type="text" pattern="[a-zA-ZäöüÄÖÜß ]*" class="form-control" name="inputVName_" value=<?php echo $Vorname?> required>
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="inputNName_">Nachname:</label>
-                    <input type="text" class="form-control" name="inputNName_" value=<?php echo $Nachname?>>
+                    <input type="text" pattern="[a-zA-ZäöüÄÖÜß- ]*" class="form-control" name="inputNName_" value=<?php echo $Nachname?> required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6 ">
                     <label for="FormSelectGender_">Geschlecht:</label>
-                    <input type="text" class="form-control" name="FormSelectGender_" value=<?php echo $Geschlecht?>>
+                    <input type="text" class="form-control" name="FormSelectGender_" value=<?php echo $Geschlecht?> required>
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="inputGeburtstg_">Geburtsdatum:</label>
-                    <input type="text" class="form-control" name="inputGeburtstg_" value=<?php echo $Geburtstag?>>
+                    <input type="text" class="form-control" name="inputGeburtstg_" value=<?php echo $Geburtstag?> required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6 ">
                     <label for="inputStraße_">Straße:</label>
-                    <input type="text" class="form-control" name="inputStraße_" value=<?php echo $Straße?>>
+                    <input type="text" class="form-control" name="inputStraße_" value=<?php echo $Straße?> required>
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="inputHN_">Hausnummer:</label>
@@ -184,18 +182,18 @@
             <div class="form-row">
                 <div class="form-group col-md-6 ">
                     <label for="inputPLZ_">PLZ:</label>
-                    <input type="text" class="form-control" name="inputPLZ_" value=<?php echo $Plz?>>
+                    <input type="text" pattern="[0-9]*" class="form-control" name="inputPLZ_" value=<?php echo $Plz?>>
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="inputOrt_">Ort:</label>
-                    <input type="text" class="form-control" name="inputOrt_" value=<?php echo $Ort?>>
+                    <input type="text" pattern="[a-zA-ZäöüÄÖÜß ]*" class="form-control" name="inputOrt_" value=<?php echo $Ort?>>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6 ">
                     <label for="inputEmail_">Email:</label>
-                    <input type="text" class="form-control" name="inputEmail_" value=<?php echo $Email?>>
+                    <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" name="inputEmail_" value=<?php echo $Email?>>
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="newsletterTRUE_">Newsletter:</label>
@@ -203,69 +201,24 @@
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="inputTLF_">Telefonnummer:</label>
-                    <input type="text" class="form-control" name="inputTLF_" value=<?php echo $Telefon?>>
+                    <input type="text" pattern="[0-9]*" class="form-control" name="inputTLF_" value=<?php echo $Telefon?>>
                 </div>
             </div>
-
-            <!-- Hier bräuchten wir nochmal das Pattern für die beiden Felder-->
-
+            
             <div class="form-row">
                 <div class="form-group col-md-6 ">
                     <label for="inputKontoinhaber_">Kontoinhaber:</label>
-                    <input type="text" class="form-control" name="inputKontoinhaber_" value=<?php echo $Kontoinhaber?>>
+                    <input type="text" pattern="[a-zA-ZäöüÄÖÜß-]*" class="form-control" name="inputKontoinhaber_" value=<?php echo $Kontoinhaber?>>
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="inputIBAN_">IBAN:</label>
-                    <input type="text" class="form-control" name="inputIBAN_" value=<?php echo $Iban?>>
+                    <input type="text" pattern="^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$" class="form-control" name="inputIBAN_" value=<?php echo $Iban?>>
                 </div>
             </div>
     
           <input type="submit" class="btn btn-primary " name="test" id="test" value="An Datenbank übertragen" />
         </form>
     </div>
-
-        <?php 
-            $servername = "localhost";
-            $user = "root";
-            $pw = "";
-            $db = "sportstudio";
-
-            if(isset($_POST['test']))
-            {
-                InsertIntoDatabase();
-            }
-
-            function InsertIntoDatabase()
-            {
-                #Baut Verbindung mit der Datenbank auf
-                $con = new mysqli($servername, $user, $pw, $db);
-
-                if($con->connect_error){
-                    die("Verbindung zur Datenbank fehlgeschlagen.".$con->connect_error);
-                }
-                else{
-                    echo "Verbindung zur Datenbank steht!";
-                }
-
-                #Statement
-                $sql = "INSERT INTO mitglieder (MitgliedNr, FitnessStudio, Tarif, Vorname, Nachname, Geschlecht, Geburtsdatum, Straße, Hausnummer, Plz, Ort, Email, Newsletter, Telefon, Kontoinhaber, IBAN) VALUES ('', '". $_POST["FormSelectStudio"] ."', '". $_POST["FormSelectTarif"] ."', '". $_POST["inputVName"] ."', '". $_POST["inputNName"] ."', '". $_POST["FormSelectGender"] ."', '". $_POST["inputGeburtstag"] ."', '". $_POST["inputStraße"] ."', '". $_POST["inputHN"] ."', '". $_POST["inputPLZ"] ."', '". $_POST["inputOrt"] ."', '". $_POST["inputEmail"] ."', $newsletter, '". $_POST["inputTLF"] ."', '". $_POST["inputKontoinhaber"] ."', '". $_POST["inputIBAN"] ."');";
-
-                #Hier wird das Statement ausgeführt und überprüft ob es erfolgreich war
-                if($con->query($sql) === TRUE)
-                {
-                    #Erfolgreich übertragen
-                    echo "query succeded!";
-                }     
-                else
-                {
-                    #Übertragung fehlgeschlagen
-                    echo "Query Faield" . $con->error;
-                }
-
-                $con->close();
-            }
-        ?>
-
         <footer class="bg-light ">
             <div class="container p-4 ">
                 <div class="row ">
@@ -301,5 +254,27 @@
                 <a class="text-dark ">Sportsudio-Wolkenfeld</a>
             </div>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+
+        <script>
+            (function() {
+                'use strict'
+                var forms = document.querySelectorAll('.needs-validation')
+            
+                Array.prototype.slice.call(forms)
+                    .forEach(function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })()
+        </script>
     </body>
 </html>

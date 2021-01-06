@@ -157,7 +157,7 @@
                     </div>
                     <div class="form-group col-md-6 ">
                         <label for="inputKontoinhaber ">Kontoinhaber <a style="color:red ">*</a> </label>
-                        <input type="text " pattern="[a-zA-ZäöüÄÖÜß ]*" name="inputKontoinhaber" class="form-control " placeholder ="Vor-/&Nachname" required>
+                        <input type="text " pattern="[a-zA-ZäöüÄÖÜß-]*" name="inputKontoinhaber" class="form-control " placeholder ="Vor-Nachname" required>
                     </div>
                     <div class="form-group col-md-6 ">
                         <label for="inputIBAN ">IBAN <a style="color:red ">*</a> </label>
